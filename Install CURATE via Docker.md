@@ -14,43 +14,54 @@ and bolts in the process.
 
 ### 1. Quick installation
 
-This guide assumes that your system has Docker and Git installed! 
-If not – please refer to the official Docker’s website and download Docker, and to Git’s official website and 
-download it too. The installation process is simple and requires 2 steps:
+This guide assumes that your system has [Docker](https://www.docker.com/) and [Git](https://git-scm.com/) installed! 
+If not - please download them. 
+
+The installation process is simple and requires 3 steps:
 
 1.	Clone the latest repository on CURATE’s official GitHub documentation:
+```bash
 git clone https://github.com/user/ILYAKAZHDAN/CURATE.git 
+```
+
   * After cloning, place the contents in a directory of your choosing
   * Then, CD to that directory
 2. Build a Docker Image:
+```bash
 docker build -t CURATE_env [directory path]
+```
+
 3. Once installed, start Docker Desktop, and then run CURATE in your Terminal (Linux):
 ```bash
 docker run --rm -it -v $(pwd):/work CURATE_env bash CURATE_v1.0.sh
 ```
+
 Or if you are on Windows PowerShell, use this command to run CURATE:
 ```powershell
 docker run --rm -it -v “${PWD}:/work” CURATE_env bash CURATE_v1.0.sh 
 ```
 
-That’s about it! Enjoy :)
-To learn more, dive into 2. How does Docker work?
+That’s about it! 
+
+If you would like to learn more about how Docker works, dive into sections 2 and 3 below.
 
 ### 2. How does CURATE work with Docker?
 
 Docker provides the foundations for CURATE (the application) to work. It does this laying down three essential 
 compartments – Dockerfile, an Image and Container that are in interplay with one another:
-* Dockerfile – a text file with code – which instructs Docker to build an Image. It contains commands that 
+* **Dockerfile** – a text file with code – which instructs Docker to build an Image. It contains commands that 
   build up the OS kernel, environment variables, system files, and install the dependencies that the CURATE 
   needs to run.
-* Image – The outcome of the instructions given by Dockerfile, containing layers that are stacked on top of 
+* **Image** – The outcome of the instructions given by Dockerfile, containing layers that are stacked on top of 
   one another – corresponding to the order of subsequent instructions. It essentially holds a snapshot of all 
   required system files, libraries, binaries, and default filesystem – all of which are Immutable (unchangeable.)
-* Container – Mirrors all the files from the Image, and uses them as temporary files to create an active state – 
+* **Container** – Mirrors all the files from the Image, and uses them as temporary files to create an active state – 
   the working ground for the application. After the application is done running, the associated Container should 
   be removed as a clean-up measure (to avoid accumulation of temporary files.)
 
 ### 3. Nuts and Bolts of Docker
+
+#### 3.1. Build an Image from Scratch
 
 Building an Image is preceded by making a Dockerfile – the instructions (recipe) “booklet” in order to create 
 the essential environment that CURATE can run on.
@@ -131,7 +142,7 @@ Or – execute the following command:
 docker run --rm -it CURATE_env micromamba list -n CURATE_env
 ```
 
-### 3.2. Run CURATE by using a created or existing Image:
+#### 3.2. Run CURATE by using a created or existing Image:
 1. Go to the script’s working directory on your computer:
 cd /your/path/to/CURATE_env/
 2. Then, run it by executing:
