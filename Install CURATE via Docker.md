@@ -194,4 +194,4 @@ This will return the Total Memory available for disposal by the Docker image.
 For 15 GB for example, it should show something like this:
  `Total Memory: 14.63GiB`
 
-Once set up, you can run CURATE as shown on Page 1 – 1. Quick installation.
+Once set up, you will be ready to run CURATE!
