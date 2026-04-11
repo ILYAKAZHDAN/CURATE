@@ -15,7 +15,7 @@ and bolts in the process.
 ### 1. Quick installation
 
 This guide assumes that your system has [Docker](https://www.docker.com/) and [Git](https://git-scm.com/) installed! 
-If not - please download them. 
+If not - please install them. 
 
 The installation process is simple and requires 3 steps:
 
