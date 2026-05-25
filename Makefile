@@ -20,8 +20,6 @@ ex_file=$$(ls CURATE_*.sh | sort -V | tail -1)
 
 ###### CODE BELOW ######
 
-# 	@mamba env list | grep -q "$(env)" && (echo "Error >> The CURATE environment \"$(env)\" already exists. To prevent overwriting, Makefile will stop here. You can re-install the dependencies by executing: \"make remove\", followed by \"make\"" && exit 1) || true
-
 ### (1) Install ###
 # - Installs CURATE's dependencies
 # - Makes CURATE executable by adding it to the PATH environment variable ("../env/bin/")
