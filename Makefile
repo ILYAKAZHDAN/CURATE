@@ -54,6 +54,10 @@ update:
 	@mamba env list | grep -q "$(env)" || (echo "Error >> CURATE and its dependencies are NOT installed yet. Please install them by executing: \"make\"" && exit 1)
 	@test -f $(env_file) || (echo "Error >> Could not find '$(env_file)'. Please make sure it exists and then try again." && exit 1)
 	@test -n "$(ex_file)" || (echo "Error >> Could not find any CURATE_vX.X.sh file! Please make sure it exists - it's required for the update." && exit 1)
+
+	@echo "CURATE >> Updating '$(ex_file)' in the PATH environment variables..."
+	@ln -sf "$(PWD)/$(ex_file)" "$$CONDA_PREFIX/bin/curate"
+
 	@echo "CURATE >> Updating CURATE's dependencies..."
 	@mamba env update -n $(env) -f $(env_file) -y --prune
 	@echo "CURATE >> Update is complete. Making sure that all required packages are installed ..."
